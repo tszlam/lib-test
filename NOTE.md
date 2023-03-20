@@ -66,3 +66,9 @@ src/index.ts → ./dist/index-amd.js, ./dist/index-cjs.js, ./dist/index-es.js, .
     at async catchUnfinishedHookActions (/Users/lizilin/c/lib-test/node_modules/.pnpm/rollup@3.19.1/node_modules/rollup/dist/shared/rollup.js:25204:20)
     at async rollupInternal (/Users/lizilin/c/lib-test/node_modules/.pnpm/rollup@3.19.1/node_modules/rollup/dist/shared/rollup.js:25950:5)
 ```
+
+## 处理
+梳理了下思路，先想下这里rollup和ts的关系   
+rollup要构建，构建的过程是借用ts来把ts编译成js，而ts本身对项目也有开发时提示的作用。   
+所以对ts来说，对项目和对rollup的工作是不一样的，所以配置也是不一样的。   
+所以处理方法就是把对应配置放在对应的地方，对项目的配置放在tsconfig.json，对rollup的配置放在rollup.config.mjs
